@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# External libs
+Software/opendht
+Software/msgpack-*
+Software/opendht
+
+#Build DIR
+Software/bin
+Software/build

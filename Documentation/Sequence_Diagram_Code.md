@@ -35,5 +35,3 @@ P2PN-DNS Node 2 -> P2PN-DNS Node 2: Do NOT Update key value store with new domai
 P2PN-DNS Node 2 -> P2PN-DNS Node 2: Remove the update record from the \n front of the commit log. Scheme to handle error will need to be implmented
 end
 end
-
-
