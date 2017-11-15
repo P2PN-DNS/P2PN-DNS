@@ -1,7 +1,11 @@
 #include <iostream>
+#include <string>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <signal.h>
+#include <unistd.h>
 #include <opendht.h>
 //#include <vector>
-
 
 
 struct dht_params {
@@ -34,7 +38,8 @@ struct dht_params {
 // };
 
 void print_usage();
-void print_node_info(const  dht::DhtRunner& dht);
+void print_node_info(const  dht::DhtRunner& DNSdht);
+void print_routing_table(const dht::DhtRunner& DNSdht);
 dht_params parseArgs(int argc, char **argv);
-
-
+bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const std::string& IPAddress);
+const std::string GetDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName);
