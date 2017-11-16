@@ -3,8 +3,32 @@ Peer to Peer Network Domain Name System
 
 
 ### Complile 
-sh ./Install_depends.sh
+sh ./Install_depends.sh 
+
 sh ./compile.sh
+
+### Run
+
+Node 1 
+./P2PN-DNS.exe 
+
+Startup message will print: 
+OpenDNSdht node 15665d9ce9341267bfe9cb395102a33d51cd609f running on port 45725
+
+NOTE: port number.
+
+Node 2 to N
+In another terminal 
+
+if on same computer
+
+./P2PN-DNS.exe -b IPADDRESS:PORT
+e.g
+./P2PN-DNS.exe -b 0.0.0.0:45725
+
+else if on another computer cahne 0.0.0.0 to the ip address of the computer. 
+
+./P2PN-DNS.exe -b IPADDRESS:PORT
 
 ### References - Sources
 * ["Domain Name System”. En.wikipedia.org. N.p., 2017. Web. 2 November 2017.](https://en.wikipedia.org/wiki/Domain_Name_System)
@@ -20,9 +44,9 @@ sh ./compile.sh
 * [Distributed hash table En.wikipedia.org. N.p., 2017. Web. 11 November 2017.](https://en.wikipedia.org/wiki/Distributed_hash_table);
 
 ### References - Other software components and tutorials used in this application
-* C++ Standard lib
+* [C++ Standard lib]()
 * [OpenDht](https://github.com/savoirfairelinux/opendht)
 * [LevelDB Key Value Store](https://github.com/google/leveldb)
 
 ### References - Build enviroment 
-*[Cmake tutorial](http://derekmolloy.ie/hello-world-introductions-to-cmake/)
+* [Cmake tutorial](http://derekmolloy.ie/hello-world-introductions-to-cmake/)
