@@ -31,6 +31,7 @@ else if on another computer cahne 0.0.0.0 to the ip address of the computer.
 ./P2PN-DNS.exe -b IPADDRESS:PORT
 
 ### References - Sources
+* [DSN Primer Notes](http://www.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
 * ["Domain Name System”. En.wikipedia.org. N.p., 2017. Web. 2 November 2017.](https://en.wikipedia.org/wiki/Domain_Name_System)
 * ["Distributed Denial of Service Attacks on Root Nameservers ”. En.wikipedia.org. N.p., 2017. Web. 2 November 2017](https://en.wikipedia.org/wiki/Distributed_denial-of-service_attacks_on_root_nameservers)
 * ["I Fought My ISPS Bad Behavior and Won”. Eric Helgeson. Web. 2 November 2017](https://erichelgeson.github.io/blog/2013/12/31/i-fought-my-isps-bad-behavior-and-won/)
@@ -46,7 +47,7 @@ else if on another computer cahne 0.0.0.0 to the ip address of the computer.
 ### References - Other software components and tutorials used in this application
 * [C++ Standard lib]()
 * [OpenDht](https://github.com/savoirfairelinux/opendht)
-* [LevelDB Key Value Store](https://github.com/google/leveldb)
+* [SimpleDNS](https://github.com/mwarning/SimpleDNS)
 
 ### References - Build enviroment 
 * [Cmake tutorial](http://derekmolloy.ie/hello-world-introductions-to-cmake/)

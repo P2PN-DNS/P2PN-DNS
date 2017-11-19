@@ -63,14 +63,22 @@ int main (int argc, char *argv[])
         {
             std::string v;
             iss >> v;
-            bool putstatus = PutDomainName(DNSdht,"www.example.com", v);
+
+            bool putstatus = PutDomainName(DNSdht,"www.example.com", std::vector<uint8_t> {v.begin(),v.end()});
             std::cout << "Put status is: " << putstatus << std::endl;
         }
          else if (op == "g") {
             std::string rem;
             std::getline(iss, rem);
+            std::string domainlookup = "www.example.com";
+
             // calls a future in the callback, thus function can return before callback finishes. This is way the string can be empty. 
-            std::cout << GetDomainName(DNSdht,"www.example.com") << std::endl;
+            
+            auto Addressreturned = GetDomainName(DNSdht,domainlookup);
+            std::cout << std::string(Addressreturned.begin(), Addressreturned.end()) << std::endl;
+
+            //std::vector<uint8_t> v;
+            //uint8_t* a = &v[0];
         }
 
     }// end while

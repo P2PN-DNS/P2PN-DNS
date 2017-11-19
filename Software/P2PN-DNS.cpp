@@ -26,7 +26,14 @@ void print_routing_table(const dht::DhtRunner& DNSdht)
 	std::cout << DNSdht.getRoutingTablesLog(AF_INET6) << std::endl;
 }
 
-bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const std::string& IPAddress)
+void print_IpAddress(std::vector<uint8_t> Addr)
+{
+
+	std::cout << "print_IpAddress was called. IP address is print_IpAddress: "<< std::string{Addr.begin(),Addr.end()} << std::endl;
+}
+
+//bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const std::string& IPAddress)
+bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const std::vector<uint8_t>& IPAddress)
 {
 	
 	bool OperationStatus = false;
@@ -34,43 +41,41 @@ bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const 
 	//ValidateDomainName();
 	//ValidateIPAddress();
 
-	DNSdht.put(dht::InfoHash::get(DomainName), dht::Value {std::vector<uint8_t> {IPAddress.begin(), IPAddress.end()}}, [&OperationStatus](bool ok) {OperationStatus = ok;});
+	//DNSdht.put(dht::InfoHash::get(DomainName), dht::Value {std::vector<uint8_t> {IPAddress.begin(), IPAddress.end()}}, [&OperationStatus](bool ok) {OperationStatus = ok;});
+
+	DNSdht.put(dht::InfoHash::get(DomainName), dht::Value {IPAddress}, [&OperationStatus](bool ok) {OperationStatus = ok;});
 
 	return OperationStatus;
 }
 
-const std::string GetDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName)
+const std::vector<uint8_t> GetDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName)
 {
 
-	std::string IpAddress;
+	std::vector<uint8_t> IpAddress;
 
 	DNSdht.get(dht::InfoHash::get(DomainName),[&IpAddress](const std::vector<std::shared_ptr<dht::Value>>& values)
 	{
-
-
         //for (const auto& v : values)
         //{
-
-        	
-
 			// get the last value in the vector of shared pointers 
 			// get the underlying value object. 
 			// data is the name of the field 
 			// Blob is a fucking std::vector<uint8_t>   fucking write docs 
-
-        	IpAddress = std::string(values.at(values.size()-1).get()->data.begin(), values.at(values.size()-1).get()->data.end());
-            std::cout << "Got value: " << IpAddress << std::endl;
+			IpAddress = values.at(values.size()-1).get()->data;
+        	//IpAddress = std::string(values.at(values.size()-1).get()->data.begin(), values.at(values.size()-1).get()->data.end());
+            //std::cout << "Got value: " << IpAddress << std::endl;
        // }
-
         return true; // keep looking for values
     },
-    [](bool success) {
-        std::cout << "Get finished with " << (success ? "success" : "failure") << std::endl;
-    }
-);
+    [&IpAddress](bool success) {
+        //d::cout << "Get finished with " << (success ? "success" : "failure") << std::endl;
+        print_IpAddress(IpAddress);
+    });
 
 	// aync as fuck!!!!!!!!!!!
-	std::cout << "Value outside of callback is: " << IpAddress << std::endl;
+	//convert to unit_t array
+
+	//std::cout << "Value outside of callback is: " << IpAddress << std::endl;
 
     return IpAddress;
 
