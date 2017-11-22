@@ -10,6 +10,11 @@
 #include <unistd.h>
 #include <opendht.h>
 #include <vector>
+
+//#include <future>
+#include <functional>
+#include <thread>
+#include <condition_variable>
 //#include <getopt.h>
 //#include <tuple>
 //#include <readline/readline.h>

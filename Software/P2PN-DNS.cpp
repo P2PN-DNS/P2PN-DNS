@@ -51,6 +51,17 @@ bool PutDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName, const 
 const std::vector<uint8_t> GetDomainName(dht::DhtRunner& DNSdht, const std::string& DomainName)
 {
 
+	
+	// mutex lock 
+	std::mutex cv_m;
+	std::unique_lock<std::mutex> lock(cv_m);
+
+	// condtional variable to make this dumb function wait on a return value from the dht.get call
+	std::condition_variable cv;
+	//function handle to a lambda 
+	// pass in the condtional variable to the "done" callback
+	std::function<void(bool)> Callbackhandle = [&cv](bool done) { cv.notify_all(); };
+
 	std::vector<uint8_t> IpAddress;
 
 	DNSdht.get(dht::InfoHash::get(DomainName),[&IpAddress](const std::vector<std::shared_ptr<dht::Value>>& values)
@@ -66,16 +77,10 @@ const std::vector<uint8_t> GetDomainName(dht::DhtRunner& DNSdht, const std::stri
             //std::cout << "Got value: " << IpAddress << std::endl;
        // }
         return true; // keep looking for values
-    },
-    [&IpAddress](bool success) {
-        //d::cout << "Get finished with " << (success ? "success" : "failure") << std::endl;
-        print_IpAddress(IpAddress);
-    });
+    }, Callbackhandle);
 
-	// aync as fuck!!!!!!!!!!!
-	//convert to unit_t array
-
-	//std::cout << "Value outside of callback is: " << IpAddress << std::endl;
+	// force the function to wait for the conditional notify_all() that is called in the done call back. This way we know that IPAddress has a value
+	cv.wait(lock);
 
     return IpAddress;
 
