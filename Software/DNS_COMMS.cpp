@@ -1,14 +1,12 @@
 
-#include <SimpleDNS.h>
-#include <std::exception>
+#include <DNS_COMMS.hpp>
+
 
 //this may change on different systems 
-constexpr socklen_t addr_len = sizeof(struct sockaddr_in);
+socklen_t addr_len = sizeof(struct sockaddr_in);
 
-//int port = 9000;
-
-int CreateUDPSocketHandle(int port = 10666)
-{
+int CreateUDPSocketHandle(int port = 53)
+{ //
 	// create a socket 
 
   int nbytes;
@@ -26,46 +24,57 @@ int CreateUDPSocketHandle(int port = 10666)
 	
 	if (bind(sockhandle, (struct sockaddr*) &addr, addr_len) != 0)
 	{
-		throw std::runtime_error("Could not bind socket to port: " + port + " with Error: " + strerror(errno));
+		throw std::runtime_error("Could not bind socket to port: " + port); // + " with Error: " + std::string(strerror(errno)));
 	}
 
 	return sockhandle;
 }
 
-int Run(int port, bool& shutdown)
+
+int Run(int port, bool& shutdown, UpdateRecordCallback_t UpdateRecordCallback, GetRecordCallback_t GetRecordCallback)
 {
+	/// called as a thread to run the DNS server in the background. pass in the callbacks so this class does not need to know the anything about other classes using it. 
 	
-	int sock = CreateUDPSocketHandle(port);
-	struct sockaddr_in client_addr;
-	struct sockaddr_in addr;
-	int nbytes;
 
-	struct Message msg;
-	memset(&msg, 0, sizeof(struct Message));
-	uint8_t buffer[BUF_SIZE];
+	// network structures
+	struct sockaddr_in client_addr = {};
+	struct sockaddr_in addr = {};
+	int nbytes = {};
 
+	int sock = -1; // declare sock here outside of the try catch black.
+	sock = CreateUDPSocketHandle(port);
+	
 	int status = 0;
 
 	while (shutdown == false )
 	{
-		// FIXME need to look at how this is freed 
-		free_questions(msg.questions);
-		free_resource_records(msg.answers);
-		free_resource_records(msg.authorities);
-		free_resource_records(msg.additionals);
-		memset(&msg, 0, sizeof(struct Message));
+		// init with a blank initializer list
+		struct Message msg = {};
 
+		// message buffer
+		uint8_t buffer[BUF_SIZE];
+
+		// FIXME need to look at how this is freed 
+		//free_questions(msg.questions);
+		//free_resource_records(msg.answers);
+		//free_resource_records(msg.authorities);
+		//free_resource_records(msg.additionals);
+		//memset(&msg, 0, sizeof(struct Message));
+
+		// get the incoming packet on this port. record the client address so we can respond back
 		nbytes = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr *) &client_addr, &addr_len);
 
-		if (decode_msg(&msg, buffer, nbytes) != 0) {
+		if (decode_msg(&msg, buffer, nbytes) != 0) 
+		{
 			continue;
 		}
 
 		/* Print query */
-		print_query(&msg);
+		//print_query(&msg);
 
 		// need to change this to use the GetDomainName
-		resolver_process(&msg);
+		//resolver_process(&msg);
+		resolver_process(&msg, GetRecordCallback);
 
 		/* Print response */
 		//print_query(&msg);
@@ -81,10 +90,11 @@ int Run(int port, bool& shutdown)
 	} // end while(1)
 
 		//free dynamic memory 
-		free_questions(msg.questions);
-		free_resource_records(msg.answers);
-		free_resource_records(msg.authorities);
-		free_resource_records(msg.additionals);
+		// free_questions(msg.questions);
+		// free_resource_records(msg.answers);
+		// free_resource_records(msg.authorities);
+		// free_resource_records(msg.additionals);
 
 	return status;
 } // end Run
+

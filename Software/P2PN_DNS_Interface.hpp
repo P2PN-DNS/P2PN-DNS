@@ -1,3 +1,6 @@
+//include this file only once!
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <getopt.h>
