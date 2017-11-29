@@ -16,6 +16,7 @@
 #include <functional>
 #include <vector>
 #include <string> 
+#include <iostream>
 
 #define BUF_SIZE 1500  //Max MTU size
 

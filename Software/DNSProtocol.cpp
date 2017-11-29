@@ -148,6 +148,10 @@ int decode_msg(struct Message * msg, const uint8_t* buffer, int size)
 
   decode_header(msg, &buffer);
 
+  if(msg->opcode == UPDATE_OperationCode)
+  {
+    std::cout << "Update Mesage!" << std::endl;
+  }
   if ((msg->anCount + msg->nsCount) != 0)
   {
     throw std::runtime_error("Only questions expected!");
@@ -232,10 +236,21 @@ void resolver_process(struct Message* msg, GetRecordCallback_t GetRecordCallback
         // stupid way to do this FIXME !! uint8_t addr[4];
         auto temp = GetRecordCallback(std::string(q->qName));
 
-        rr->rd_data.a_record.addr[0] = temp[0];
-        rr->rd_data.a_record.addr[1] = temp[1];
-        rr->rd_data.a_record.addr[2] = temp[2];
-        rr->rd_data.a_record.addr[3] = temp[3];
+        if(temp.size() > 3) // bad way to eval this
+        {
+          rr->rd_data.a_record.addr[0] = temp[0];
+          rr->rd_data.a_record.addr[1] = temp[1];
+          rr->rd_data.a_record.addr[2] = temp[2];
+          rr->rd_data.a_record.addr[3] = temp[3];
+        }
+        else 
+        {
+          rr->rd_data.a_record.addr[0] = 0;
+          rr->rd_data.a_record.addr[1] = 0;
+          rr->rd_data.a_record.addr[2] = 0;
+          rr->rd_data.a_record.addr[3] = 0;
+        }
+
 
         if (rc < 0)
         {

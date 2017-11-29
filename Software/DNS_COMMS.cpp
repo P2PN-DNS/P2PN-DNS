@@ -64,6 +64,8 @@ int Run(int port, bool& shutdown, UpdateRecordCallback_t UpdateRecordCallback, G
 		// get the incoming packet on this port. record the client address so we can respond back
 		nbytes = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr *) &client_addr, &addr_len);
 
+		std::cout << "Got Message!" << std::endl;
+		
 		if (decode_msg(&msg, buffer, nbytes) != 0) 
 		{
 			continue;
@@ -97,4 +99,29 @@ int Run(int port, bool& shutdown, UpdateRecordCallback_t UpdateRecordCallback, G
 
 	return status;
 } // end Run
+
+// int SendDNSUpdate(const std::string& Domainname, const std::vector<uint8_t> & testinputVector, const std::string  )
+// {
+
+// 	struct sockaddr_in client_addr = {};
+// 	struct sockaddr_in addr = {};
+// 	int nbytes = {};
+
+// 	int sock = -1; // declare sock here outside of the try catch black.
+// 	sock = CreateUDPSocketHandle(port);
+
+// 	// init with a blank initializer list
+// 	struct Message msg = {};
+
+// 	// message buffer
+// 	uint8_t buffer[BUF_SIZE];
+
+
+
+// 	nbytes = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr *) &client_addr, &addr_len);
+
+// 	sendto(sockfd, sendbuf, tx_len, 0, (struct sockaddr*)&socket_address, sizeof(struct sockaddr_ll)) < 0)
+
+
+// }
 

@@ -31,6 +31,7 @@ else if on another computer cahne 0.0.0.0 to the ip address of the computer.
 ./P2PN-DNS.exe -b IPADDRESS:PORT
 
 ### References - Sources
+* [DNS update](https://tools.ietf.org/html/rfc2136)
 * [DSN Primer Notes](http://www.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
 * ["Domain Name System”. En.wikipedia.org. N.p., 2017. Web. 2 November 2017.](https://en.wikipedia.org/wiki/Domain_Name_System)
 * ["Distributed Denial of Service Attacks on Root Nameservers ”. En.wikipedia.org. N.p., 2017. Web. 2 November 2017](https://en.wikipedia.org/wiki/Distributed_denial-of-service_attacks_on_root_nameservers)
