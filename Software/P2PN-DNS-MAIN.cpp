@@ -50,6 +50,14 @@ int main (int argc, char *argv[])
     //update dns record
 
 	std::cout << "Starting DNS server" << std::endl;
+
+	std::vector<uint8_t> test;
+	test.push_back(6);
+	test.push_back(6);
+	test.push_back(6);
+	test.push_back(9);
+	
+	UpdateRecord("google.com",test);
 	
 	// while loop 
 	Run(10666,ShutdownFlag, UpdateRecord, GetRecord);
@@ -81,4 +89,5 @@ void SingnalHandler(int sig)
 { // can be called asynchronously
 	std::cout << "Signal caught! Shutting down" << std::endl;
   	ShutdownFlag = true; // set flag
+  	exit(0);
 }

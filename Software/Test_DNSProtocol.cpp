@@ -25,15 +25,37 @@ bool TestUpdaterecordcallback(const std::string & testinput, const std::vector<u
 	return true; 
 }
 
+void RunServer()
+{
+	bool shutdown = false; 
+	Run(10666,shutdown, TestUpdaterecordcallback, TestGetrecordcallback);
+}
+
+void sendupdate()
+{
+
+	std::vector<uint8_t> IpADDR;
+	IpADDR.push_back(192);
+	IpADDR.push_back(168);
+	IpADDR.push_back(1);
+	IpADDR.push_back(3);
+
+	SendDNSUpdate("google.com", IpADDR, "127.0.0.1", 10666 );
+
+}
+
 
 int main()
 {	
 
 	std::cout << "Starting Test_DNSProtocol" << std::endl;
-	bool shutdown = false; 
+	
 
-	Run(10666,shutdown, TestUpdaterecordcallback, TestGetrecordcallback);
+	sendupdate();
+
+
 
 	std::cout << "Stopping Test_DNSProtocol" << std::endl;
 	return 0; 
 }
+
