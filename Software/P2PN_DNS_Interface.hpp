@@ -21,9 +21,11 @@ struct dht_params {
     bool service {false};
     std::pair<std::string, std::string> bootstrap {};
     in_port_t proxyserver {0};
+    in_port_t dnsport{0};
 };
 
 static const constexpr in_port_t DHT_DEFAULT_PORT = 4222;
+static const constexpr in_port_t DNS_DEFAULT_PORT = 10666;
 
 static const constexpr char* PROMPT = ">> ";
 
@@ -39,6 +41,7 @@ static const constexpr struct option long_options[] = {
    {"logfile",    required_argument, nullptr, 'l'},
    {"syslog",     no_argument      , nullptr, 'L'},
    {"proxyserver",required_argument, nullptr, 'S'},
+   {"dns_port",   required_argument, nullptr, 'D'},
    {nullptr,      0                , nullptr,  0}
 };
 

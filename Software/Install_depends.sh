@@ -20,7 +20,7 @@ cmake -DMSGPACK_CXX11=ON -DMSGPACK_BUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/us
 make -j4
 sudo make install
 
-
+cd ../..
 
 
 # clone the repo
@@ -29,6 +29,7 @@ git clone https://github.com/savoirfairelinux/opendht.git
 # build and install
 cd opendht
 mkdir build
+cd build
 cmake -DOPENDHT_PYTHON=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
 make -j4
 sudo make install

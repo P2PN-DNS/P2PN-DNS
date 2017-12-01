@@ -40,7 +40,8 @@ dht_params parseArgs(int argc, char **argv)
 {
     dht_params params;
     int opt;
-    while ((opt = getopt_long(argc, argv, "hidsvp:n:b:l:", long_options, nullptr)) != -1) 
+    params.dnsport = DNS_DEFAULT_PORT;
+    while ((opt = getopt_long(argc, argv, "hidsvp:n:b:l:D:", long_options, nullptr)) != -1) 
     {
         switch (opt) {
         case 'p': {
@@ -89,7 +90,19 @@ dht_params parseArgs(int argc, char **argv)
             break;
         case 's':
             params.service = true;
-            break;
+        case 'D': {
+            int port_arg = atoi(optarg);
+            if (port_arg >= 0 && port_arg < 0x10000)
+            {
+                params.dnsport = port_arg;
+            }
+            else
+            {
+                std::cout << "Invalid port: " << port_arg << std::endl;
+                std::cout << "Using standard DNS port of :" <<  DNS_DEFAULT_PORT << std::endl;
+            }
+        }
+        break;
         default:
             break;
         }
