@@ -1,0 +1,43 @@
+# Specify the minimum version for CMake
+
+cmake_minimum_required(VERSION 2.8)
+set (CMAKE_CXX_STANDARD 14)
+# Project's name
+
+project(P2PN-DNS)
+# Set the output folder where your program will be created
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
+# The following folder will be included
+include_directories("${PROJECT_SOURCE_DIR}")
+
+#nettle
+include_directories(usr/include/nettle)
+
+
+#GNUTLS
+include_directories(/usr/include/gnutls)
+
+find_package (GnuTLS)
+
+if(GNUTLS_FOUND)
+  include_directories(${GNUTLS_INCLUDE_DIRS}) 
+endif (GNUTLS_FOUND)
+
+
+#OPENDHT
+include_directories(/usr/local/include/)
+include_directories(/usr/local/include/opendht)
+
+add_library(opendht STATIC IMPORTED)
+set_property(TARGET opendht PROPERTY IMPORTED_LOCATION "/usr/local/lib/libopendht.a")
+
+
+add_executable(P2PN-DNS ${PROJECT_SOURCE_DIR}/P2PN-DNS.cpp)
+
+target_link_libraries(P2PN-DNS ${GNUTLS_LIBRARIES})
+#target_link_libraries(P2PN-DNS GNUTLS)
+target_link_libraries(P2PN-DNS opendht)
+

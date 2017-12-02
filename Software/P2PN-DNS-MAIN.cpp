@@ -60,9 +60,9 @@ int main (int argc, char *argv[])
 	UpdateRecord("google.com",test);
 	
 	// while loop 
-	Run(10666,ShutdownFlag, UpdateRecord, GetRecord);
+	Run(params.dnsport,ShutdownFlag, UpdateRecord, GetRecord);
 
-	std::cout << "Stopping Test_DNSProtocol" << std::endl;
+	std::cout << "Stopping P2PN-DNS" << std::endl;
 	std::cout << std::endl <<  "Stopping node..." << std::endl;
 	DNSdht.join();
 
@@ -89,5 +89,6 @@ void SingnalHandler(int sig)
 { // can be called asynchronously
 	std::cout << "Signal caught! Shutting down" << std::endl;
   	ShutdownFlag = true; // set flag
+  	sleep(2);
   	exit(0);
 }
