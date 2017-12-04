@@ -30,17 +30,29 @@ int main (int argc, char *argv[])
         return 0;
     }
 
+
+
 	// start the DHT backend
 	DNSdht.run(params.port, dht::crypto::generateIdentity("P2PN-DNS"), true);
 
 	//locate other nodes 
 	// steal from scanner code 
 
+
+	//enable looging to syslog
+	char logname [16];			// why c style strings 
+	sprintf(logname, "P2PN-DNS%d",params.port);
+
+	dht::log::enableSyslog(DNSdht,logname);
+
+
 	// this is the -b argument 
 	if (not params.bootstrap.first.empty())
 	{
     	DNSdht.bootstrap(params.bootstrap.first.c_str(), params.bootstrap.second.c_str());
 	}
+
+
 
     print_node_info(DNSdht);
     print_routing_table(DNSdht);

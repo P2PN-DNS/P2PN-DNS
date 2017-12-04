@@ -13,6 +13,11 @@
 #include <functional>
 #include <thread>
 #include <condition_variable>
+//#include <opendht/log.h>
+//#include <opendht/log_enable.h>
+
+//include/opendht/log.h
+//    include/opendht/log_enable.h
 
 void print_usage();
 void print_node_info(const  dht::DhtRunner& DNSdht);
