@@ -2,37 +2,44 @@
 Peer to Peer Network Domain Name System
 ### Required 
 make 
+
 syslog 
 
 ### Complile 
 make INSTALL_DEPENDS
+
 make all 
 
 To build test programs 
 
-TEST
+make TEST
 
 ### Run
 
 Node 1 
 -D is DNS port 
+
 -p is DHT port
 
 ./P2PN-DNS.exe -D USEDPORT_FOR_DNS -P ANOTHERUNUSEDPORT_FOR_DHT
+
 example:
 ./P2PN-DNS.exe -D 10076 -p 50666
 
 Startup message will print: 
+
 OpenDNSdht node 15665d9ce9341267bfe9cb395102a33d51cd609f running on port 50666
 
 NOTE: port number.
 
 Node 2 to N
+
 In another terminal 
 
 if on same computer
 
 ./P2PN-DNS.exe -D UNUSEDPORT -P ANOTHERUNUSEDPORT -b IPADDRESS:PORT
+
 example:
 ./P2PN-DNS.exe -D 10075 -p 50667 -b 127.0.0.1:50666
 
@@ -43,15 +50,20 @@ else if on another computer change 127.0.0.1 to the ip address of the computer.
 Send a DNS update mesage 
 
 ./DNS-UPDATE.exe 
+
 	Usage : S DomainName IPAddress DNSserverNodeIP DnsServerPort
 example:
+
 	S google.com 192.178.78.5 127.0.0.1 10076
 
 DnsServerPort must match the port specified in -D for one of the reachable nodes
 
 Send a DNS query for a domain name. Use dig
+
 	dig @Dnsserver_IP -p DNSport(-D option from P2PN-DNS) Domainname 
+
 example:  
+
 	dig @127.0.0.1 -p 10075 google.com
 
 ### References - Sources
