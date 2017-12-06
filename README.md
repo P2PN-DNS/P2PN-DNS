@@ -6,13 +6,14 @@ make
 syslog 
 
 ### Complile 
-make INSTALL_DEPENDS
 
-make all 
+	make INSTALL_DEPENDS
+
+	make all 
 
 To build test programs 
 
-make TEST
+	make TEST
 
 ### Run
 
@@ -21,10 +22,11 @@ Node 1
 
 -p is DHT port
 
-./P2PN-DNS.exe -D USEDPORT_FOR_DNS -P ANOTHERUNUSEDPORT_FOR_DHT
+	./P2PN-DNS.exe -D USEDPORT_FOR_DNS -P ANOTHERUNUSEDPORT_FOR_DHT
 
 example:
-./P2PN-DNS.exe -D 10076 -p 50666
+
+	./P2PN-DNS.exe -D 10076 -p 50666
 
 Startup message will print: 
 
@@ -38,18 +40,19 @@ In another terminal
 
 if on same computer
 
-./P2PN-DNS.exe -D UNUSEDPORT -P ANOTHERUNUSEDPORT -b IPADDRESS:PORT
+	./P2PN-DNS.exe -D UNUSEDPORT -P ANOTHERUNUSEDPORT -b IPADDRESS:PORT
 
 example:
-./P2PN-DNS.exe -D 10075 -p 50667 -b 127.0.0.1:50666
+
+	./P2PN-DNS.exe -D 10075 -p 50667 -b 127.0.0.1:50666
 
 else if on another computer change 127.0.0.1 to the ip address of the computer. 
 
-./P2PN-DNS.exe -b IPADDRESS:PORT
+	./P2PN-DNS.exe -b IPADDRESS:PORT
 
 Send a DNS update mesage 
 
-./DNS-UPDATE.exe 
+	./DNS-UPDATE.exe 
 
 	Usage : S DomainName IPAddress DNSserverNodeIP DnsServerPort
 example:
