@@ -1,19 +1,29 @@
 # P2PN-DNS
 Peer to Peer Network Domain Name System
-
+### Required 
+make 
+syslog 
 
 ### Complile 
-sh ./Install_depends.sh 
+make INSTALL_DEPENDS
+make all 
 
-sh ./compile.sh
+To build test programs 
+
+TEST
 
 ### Run
 
 Node 1 
-./P2PN-DNS.exe 
+-D is DNS port 
+-p is DHT port
+
+./P2PN-DNS.exe -D USEDPORT_FOR_DNS -P ANOTHERUNUSEDPORT_FOR_DHT
+example:
+./P2PN-DNS.exe -D 10076 -p 50666
 
 Startup message will print: 
-OpenDNSdht node 15665d9ce9341267bfe9cb395102a33d51cd609f running on port 45725
+OpenDNSdht node 15665d9ce9341267bfe9cb395102a33d51cd609f running on port 50666
 
 NOTE: port number.
 
@@ -22,13 +32,27 @@ In another terminal
 
 if on same computer
 
-./P2PN-DNS.exe -b IPADDRESS:PORT
-e.g
-./P2PN-DNS.exe -b 0.0.0.0:45725
+./P2PN-DNS.exe -D UNUSEDPORT -P ANOTHERUNUSEDPORT -b IPADDRESS:PORT
+example:
+./P2PN-DNS.exe -D 10075 -p 50667 -b 127.0.0.1:50666
 
-else if on another computer cahne 0.0.0.0 to the ip address of the computer. 
+else if on another computer change 127.0.0.1 to the ip address of the computer. 
 
 ./P2PN-DNS.exe -b IPADDRESS:PORT
+
+Send a DNS update mesage 
+
+./DNS-UPDATE.exe 
+	Usage : S DomainName IPAddress DNSserverNodeIP DnsServerPort
+example:
+	S google.com 192.178.78.5 127.0.0.1 10076
+
+DnsServerPort must match the port specified in -D for one of the reachable nodes
+
+Send a DNS query for a domain name. Use dig
+	dig @Dnsserver_IP -p DNSport(-D option from P2PN-DNS) Domainname 
+example:  
+	dig @127.0.0.1 -p 10075 google.com
 
 ### References - Sources
 * [DNS update](https://tools.ietf.org/html/rfc2136)
@@ -44,6 +68,7 @@ else if on another computer cahne 0.0.0.0 to the ip address of the computer.
 * [Jacquin, Ludovic, et al. “The Trust Problem in Modern Network Infrastructures.” SpringerLink, Springer, Cham, 28 Apr. 2015. N.p., 2017. Web. 7 November 2017. ](https://link.springer.com/chapter/10.1007/978-3-319-25360-2_10)
 * [“ACID”. En.wikipedia.org. N.p., 2017. Web. 8 November 2017.](https://en.wikipedia.org/wiki/Acid)
 * [Distributed hash table En.wikipedia.org. N.p., 2017. Web. 11 November 2017.](https://en.wikipedia.org/wiki/Distributed_hash_table);
+* [Non-Transitive Connectivity and DHTs](https://www.usenix.org/legacy/events/worlds05/tech/full_papers/freedman/freedman_html/index.html);
 
 ### References - Other software components and tutorials used in this application
 * [C++ Standard lib]()

@@ -1,0 +1,16 @@
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: put: adding baea954b95731c68ae6e45bd1e252eb4560cdc45 -> Value[id:79aabc5300043139 Data (type: 0 ): c0b24e05]
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [store baea954b95731c68ae6e45bd1e252eb4560cdc45] changed
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [store baea954b95731c68ae6e45bd1e252eb4560cdc45] 0 remote listeners
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [search baea954b95731c68ae6e45bd1e252eb4560cdc45] [node a56f109aaa4c6451e39d9677524bdcf20eb6686c 127.0.0.1:50668] sending Query[SELECT id,seq ]
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [search baea954b95731c68ae6e45bd1e252eb4560cdc45 IPv6] expired
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: Announce done IPv6 0
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [node 00bfe70f6bf444f69bc19afb931fb183fa70735d 127.0.0.1:50666] got 'get' request for baea954b95731c68ae6e45bd1e252eb4560cdc45
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [node 00bfe70f6bf444f69bc19afb931fb183fa70735d 127.0.0.1:50666] sending 1 values
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [search baea954b95731c68ae6e45bd1e252eb4560cdc45] [node a56f109aaa4c6451e39d9677524bdcf20eb6686c 127.0.0.1:50668] sending 'put' (vid: 274745)
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: sending 41 bytes of values
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [node 00bfe70f6bf444f69bc19afb931fb183fa70735d 127.0.0.1:50666] got 'put' request for baea954b95731c68ae6e45bd1e252eb4560cdc45
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [store baea954b95731c68ae6e45bd1e252eb4560cdc45] storing Value[id:79aabc5300043139 Data (type: 0 ): c0b24e05]
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [store baea954b95731c68ae6e45bd1e252eb4560cdc45] changed
+Dec  6 16:49:23 Ducttape P2PN-DNS50668: [store baea954b95731c68ae6e45bd1e252eb4560cdc45] 0 remote listeners
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: [search baea954b95731c68ae6e45bd1e252eb4560cdc45] [node a56f109aaa4c6451e39d9677524bdcf20eb6686c 127.0.0.1:50668] got reply to put!
+Dec  6 16:49:23 Ducttape P2PN-DNS50666: Announce done IPv4 1

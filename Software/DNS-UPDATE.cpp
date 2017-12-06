@@ -1,4 +1,4 @@
-
+//John Grun
 #include <DNS_COMMS.hpp>
 #include <iostream>
 #include <string>
@@ -10,7 +10,7 @@
 static const constexpr char* PROMPT = ">> ";
 
 std::string readLine(const char* prefix = PROMPT);
-
+/// test callback 
 const std::vector<uint8_t> TestGetrecordcallback(const std::string & testinput)
 {
 	
@@ -24,7 +24,7 @@ const std::vector<uint8_t> TestGetrecordcallback(const std::string & testinput)
 
 	return testoutput; 
 }
-
+/// test callback 
 bool TestUpdaterecordcallback(const std::string & testinput, const std::vector<uint8_t> & testinputVector )
 {
 
@@ -39,7 +39,7 @@ void RunServer()
 	Run(10666,shutdown, TestUpdaterecordcallback, TestGetrecordcallback);
 }
 
-
+// the main function for the DNS update 
 int main(int argc, char *argv[])
 {	
 
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         }
         else if (op == "S") 
         {
-        	
+        	// get the parameters from the user. No validation at all!
             std::string DOMAINNAME, IPADDRESS, DNSSERVERIP, PORT;
             iss >> DOMAINNAME;
             iss >> IPADDRESS;
@@ -92,11 +92,11 @@ int main(int argc, char *argv[])
 				std::cout << "Invalid Ip address format!" << std::endl;
 				break;
 			}
-
+			// convert to a number without any form of validation or checking!
             std::stringstream PORTSTREAM(PORT);
             int PortInt = 0;
             PORTSTREAM >> PortInt;
-
+            
 	        SendDNSUpdate(DOMAINNAME, IpADDR, DNSSERVERIP, PortInt );
         }
 
