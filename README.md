@@ -96,8 +96,10 @@ Terminal 4
 
 	dig @127.0.0.1 -p 10078 google.com
 
-###Documentation 
+###Documentation
+
 Documentation including report and slides in the project root under Documentation
+
 [https://github.com/P2PN-DNS/P2PN-DNS](https://github.com/P2PN-DNS/P2PN-DNS)
 
 ### References - Sources
@@ -112,19 +114,19 @@ Documentation including report and slides in the project root under Documentatio
 * [Jacquin, Ludovic, et al. “The Trust Problem in Modern Network Infrastructures.” SpringerLink, Springer, Cham, 28 Apr. 2015. N.p., 2017. Web. 7 November 2017. ](https://link.springer.com/
 * [“ACID”. En.wikipedia.org. N.p., 2017. Web. 8 November 2017.](https://en.wikipedia.org/wiki/Acid)
 *[DataStax Academy Follow. “A Deep Dive Into Understanding Apache Cassandra.”LinkedIn SlideShare, 25 Sept. 2013. N.p., 2017. Web. 2 December 2017.](https://www.slideshare.net/planetcassandra/a-deep-dive-into-understanding-apache-cassandra)
-*[“Peer-to-Peer (P2P) Systems.” SlidePlayer. N.p., 2017. Web. 2 December 2017](http://slideplayer.com/slide/4168557/)
-*[“Non-Transitive Connectivity and DHTs “](https://www.usenix.org/legacy/events/worlds05/tech/full_papers/freedman/freedman_html/index.html)
-*[“Amazon Route 53”. En.wikipedia.org. N.p., 2017. Web. 6 December 2017.](https://en.wikipedia.org/wiki/Amazon_Route_53)
-*[Distributed hash table En.wikipedia.org. N.p., 2017. Web. 11 November 2017.](https://en.wikipedia.org/wiki/Distributed_hash_table);
-*[FIFO (computing and electronics)” .En.wikipedia.org. N.p., 2017. Web. 6 December 2017.](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)    
-*[“RFC 1034  DOMAIN NAMES - CONCEPTS AND FACILITIES”, N.p., 2017. Web. 2 November 2017.](https://www.ietf.org/rfc/rfc1034.txt)
-*[“RFC 1035 DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION” , N.p., 2017. Web. 2 November 2017.](https://www.ietf.org/rfc/rfc1035.txt)
-*[“Embedded DNS server in user-defined networks” N.p., 2017. Web. 2 November 2017.](https://docs.docker.com/engine/userguide/networking/configure-dns/)
-*[“OpenDHT”   Web. 2 November 2017.](https://github.com/savoirfairelinux/opendht)
-*[“SimpleDNS: Web. 2 November 2017.](https://github.com/mwarning/SimpleDNS)
-*[“Dynamic Updates in the Domain Name System (DNS UPDATE)” Web. 2 November 2017.](https://tools.ietf.org/html/rfc2136)
-*[“ You can’t Peer to Peer the DNS”](https://nohats.ca/wordpress/blog/2012/04/09/you-cant-p2p-the-dns-and-have-it-too/)
-*[DSN Primer Notes](http://www.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
+* [“Peer-to-Peer (P2P) Systems.” SlidePlayer. N.p., 2017. Web. 2 December 2017](http://slideplayer.com/slide/4168557/)
+* [“Non-Transitive Connectivity and DHTs “](https://www.usenix.org/legacy/events/worlds05/tech/full_papers/freedman/freedman_html/index.html)
+* [“Amazon Route 53”. En.wikipedia.org. N.p., 2017. Web. 6 December 2017.](https://en.wikipedia.org/wiki/Amazon_Route_53)
+* [Distributed hash table En.wikipedia.org. N.p., 2017. Web. 11 November 2017.](https://en.wikipedia.org/wiki/Distributed_hash_table);
+* [FIFO (computing and electronics)” .En.wikipedia.org. N.p., 2017. Web. 6 December 2017.](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)    
+* [“RFC 1034  DOMAIN NAMES - CONCEPTS AND FACILITIES”, N.p., 2017. Web. 2 November 2017.](https://www.ietf.org/rfc/rfc1034.txt)
+* [“RFC 1035 DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION” , N.p., 2017. Web. 2 November 2017.](https://www.ietf.org/rfc/rfc1035.txt)
+* [“Embedded DNS server in user-defined networks” N.p., 2017. Web. 2 November 2017.](https://docs.docker.com/engine/userguide/networking/configure-dns/)
+* [“OpenDHT”   Web. 2 November 2017.](https://github.com/savoirfairelinux/opendht)
+* [“SimpleDNS: Web. 2 November 2017.](https://github.com/mwarning/SimpleDNS)
+* [“Dynamic Updates in the Domain Name System (DNS UPDATE)” Web. 2 November 2017.](https://tools.ietf.org/html/rfc2136)
+* [“ You can’t Peer to Peer the DNS”](https://nohats.ca/wordpress/blog/2012/04/09/you-cant-p2p-the-dns-and-have-it-too/)
+* [DSN Primer Notes](http://www.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
 
 ### References - Other software components and tutorials used in this application
 * [C++ Standard lib]()
